@@ -61,7 +61,6 @@
     ?>
   </table>
 </div>
-<?php
-  // untuk menyimpan file lain ke file utama // 
+<?php 
   include "../footer.php"; 
 ?>
