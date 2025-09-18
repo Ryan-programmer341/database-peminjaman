@@ -1,0 +1,34 @@
+
+body{
+    background: #f9f9f9;
+    color: #ffffff;
+    padding: 20px;
+}
+
+
+nav {
+   margin-bottom: 20px;
+   text-align: right;
+}
+nav a {
+    text-decoration: solid;
+    color: rgb(232, 23, 23);
+    padding: 8px 15px;
+    border-radius: 6px;
+    margin-right: 5px;
+    transition: 0.2s;
+}
+nav a:hover {
+    background: rgb(230, 234, 10);
+    color: white; 
+}
+
+
+.container {
+    background: gray;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
