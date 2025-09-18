@@ -1,7 +1,7 @@
 <?php
     // untuk memasukkan file lain ke dalam file utama
     include "../koneksi.php";
-    include "../header.php";
+    include "header.php";
 
     // kita ingin tahu id atau baris mana yang diedit,update dan delete mana yang akan dicari di database//
     $id = $_GET['id'];
@@ -32,7 +32,6 @@
 
     }
 ?>
-<link rel="stylesheet" href= "../style/page.css">
 <div class="container mb-8">
     <h2>Edit Buku</h2>
     <form method="POST">
@@ -56,7 +55,6 @@
             <label>Pengarang</label>
             <input type="text" name="author" class="form-control" value="<?= $data['author'] ?>">
         </div>
-        <link rel="stylesheet" href= "../style/page.css">
         <button type="submit" class="btn btn-success">Update</button>
         <a href="index.php" class="btn btn-secondary">Batal</a>
     </form>

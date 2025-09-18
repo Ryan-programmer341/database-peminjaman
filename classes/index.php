@@ -12,8 +12,8 @@
         $hasil = mysqli_query($koneksi, "SELECT * FROM classes");
     }
 ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-<link rel="stylesheet" href="../style/page.css">
+
+
 <div class="container">
     <h2> Daftar Kelas</h2>
     <form method="GET" action="index.php" style="margin-bottom:30px; display:flex; gap:20px;">

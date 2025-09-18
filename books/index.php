@@ -20,9 +20,6 @@
   }
 ?>
 
-<link rel="stylesheet" href="../style/page.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
 <div class="container">
   <h2>Daftar Buku</h2>
   <form method="GET" action="index.php" style="margin-bottom:30px; display:flex; gap:20px;">

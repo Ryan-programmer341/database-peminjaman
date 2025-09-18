@@ -1,13 +1,12 @@
 <?php
     include "../koneksi.php";
-    include "../header.php";
+    include "header.php";
 
 
     $id = $_GET['id'];
     $hasil = mysqli_query($koneksi, "SELECT * FROM classes WHERE id=$id");
     $data = mysqli_fetch_assoc($hasil);
 ?>
-<link rel="stylesheet" href= "../style/page.css">
 <div class="container mb-8">
 <h2>EDIT KELAS</h2>
         <form method="POST">

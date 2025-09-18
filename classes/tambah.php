@@ -1,9 +1,9 @@
 <?php
 include "../koneksi.php";
-include "../header.php";
+include "header.php";
 ?>
 
-<link link rel="stylesheet" href="../style/page.css">
+<div class="container">
 <h2>Tambah Kelas Baru</h2>
     <form method="POST">
         <div class="mb-3">

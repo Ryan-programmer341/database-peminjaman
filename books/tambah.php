@@ -1,6 +1,6 @@
 <?php
   include "../koneksi.php";
-  include "../header.php";
+  include "header.php";
 
 
   if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -20,8 +20,6 @@
   }
 ?>
 
-<link rel="stylesheet" href= "../style/page.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 <div class="container">
   
   <h2>Tambah Buku</h2>
@@ -50,6 +48,5 @@
     <a href= "index.php" class="btn btn-secondary">Batal</a>
   </form>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
 <?php include "../footer.php"; ?>

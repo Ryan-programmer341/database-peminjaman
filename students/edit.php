@@ -1,6 +1,6 @@
 <?php
     include "../koneksi.php";
-    include "../header.php";
+    include "header.php";
 
     $id = $_GET['id'];
     $result = mysqli_query($koneksi, "SELECT * FROM students WHERE id=$id");
@@ -51,7 +51,6 @@
         </div>
         <button type="submit" class="btn btn-success">Update</button>
         <a href="index.php" class="btn btn-secondary">Batal</a>
-        <link rel="stylesheet" href="../style/page.css">
     </form>
 </div>
 <?php 
