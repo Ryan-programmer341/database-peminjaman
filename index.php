@@ -3,15 +3,15 @@
 ?>
     <div class= "container">
         <h2>Selamat Datang di Web peminjaman buku</h2>
-        <p>Silahkan pilih menu.</p>
+        <p>Silahkan Pilih Menu Yang Ada Diatas</p>
 
 
-        <!-- <hr> -->
+            <!-- <hr>
 
 
-        <!-- <div class="about">
+        <div class="about">
             <h3>Tentang Website</h3>
-            <p>Website ini dibuat oleh Ryan</p>
+            <p>Website ini dibuat oleh Ryan Dan juga Website ini masih tahap perkembangan</p>
         </div>
         
         
@@ -24,7 +24,7 @@
                     </a><br></i></a>
                 </li>
             </ul>
-        </div> -->
+        </div>  -->
     </div>
 <?php 
     include "footer.php"; 
