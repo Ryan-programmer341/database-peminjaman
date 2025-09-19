@@ -46,8 +46,16 @@
             <input type="text" name="phone_number" class="form-control" value="<?= $data['phone_number'] ?>">
         </div> 
         <div class="mb-2">
-            <label>Class_id</label>
-            <input type="text" name="class_id" class="form-control" value="<?= $data['class_id'] ?>">
+            <label>Class_name</label>
+            <select name="class_id" class="form-control">
+                <?php
+                $kelas = mysqli_query($koneksi, "SELECT * FROM classes");
+                while ($row = mysqli_fetch_assoc($kelas)) {
+                    $selected = ($data['class_id'] == $row['id']) ? "selected" : "";
+                    echo "<option value='".$row['id']."'>".$row['name']."</option>";
+                }
+                ?>
+                </select>
         </div>
         <button type="submit" class="btn btn-success">Update</button>
         <a href="index.php" class="btn btn-secondary">Batal</a>
