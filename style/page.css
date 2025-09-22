@@ -7,7 +7,8 @@ body {
 }
 
 .container {
-  width: 80%;
+  width: 100%;
+  max-width: 1000px;
   margin: 30px auto;
   background: #fff;
   padding: 20px;
@@ -21,6 +22,7 @@ h2 {
 }
 
 .table {
+  margin: 0 auto;
   width: 100%;
   border-collapse: collapse;
 }
@@ -29,11 +31,18 @@ h2 {
   background: #007bff;
   color: #fff;
   padding: 10px;
+  border: 1px solid #ddd;
+  text-align: center;
 }
 
 .table td {
   padding: 10px;
   border: 1px solid #ddd;
+  text-align: center;
+}
+
+.table tr:hover {
+  background-color: #f2f2f2;
 }
 
 .btn {
