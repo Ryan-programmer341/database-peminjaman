@@ -49,10 +49,10 @@
             <label>Class_name</label>
             <select name="class_id" class="form-control">
                 <?php
-                    $kelas = mysqli_query($koneksi, "SELECT * FROM classes");
+                    $kelas = mysqli_query($koneksi, "SELECT * FROM classes ");
                     while ($row = mysqli_fetch_assoc($kelas)) {
                         $selected = ($data['class_id'] == $row['id']) ? "selected" : "";
-                        echo "<option value='".$row['id']."'>".$row['name']."</option>";
+                        echo "<option value='".$row['id']."' $selected>".$row['name']."</option>";
                     }
                 ?>
             </select>
