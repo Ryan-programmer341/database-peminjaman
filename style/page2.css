@@ -20,6 +20,23 @@ h2 {
     margin-bottom: 20px;
 }
 
+.table.table-bordered {
+    width: 100px;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+.table.table-bordered th,
+.table.table-bordered td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.table.table-bordered tr:hover {
+    background-color: black;
+}
+
 .table {
     width: 100%;
     border-collapse: collapse;
