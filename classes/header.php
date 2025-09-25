@@ -14,6 +14,7 @@
             <a href="index.php"><i class="bi bi-house-door me-2"></i>Class</a>
             <a href="../books/index.php"><i class="bi bi-book me-2"></i>Book</a>
             <a href="../students/index.php"><i class="bi bi-backpack3 me-2"></i>Students</a>
+            <a href="../borrows/index.php"><i class="bi bi-person-circle me-2""></i>Borrows</a>
     </nav>
     </body>
 </html>
