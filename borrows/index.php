@@ -29,7 +29,7 @@ if ($keyword !='') {
 <div class="container">
     <h2>DAFTAR PEMINJAMAN</H2>
     <form method="GET" action="index.php" style="margin-bottom:30px; display:flex; gap:20px;">
-        <input type="text" name="keyword" placeholder="cari Nama / nis / birthdate / phonenumber/ classname"
+        <input type="text" name="keyword" placeholder="cari Nama peminjam / tanggal pinjaman / pengembalian pinjaman"
         value="<?= isset($_GET['keyword']) ? $_GET['keyword'] : '' ?>"
         style="flex:1; padding:8px; border: 1px solid #cc1111ff; border-radius: 5px">
         <button type="submit" class="btn btn-primary">Cari</button>
