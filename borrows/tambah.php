@@ -4,14 +4,21 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $student_id = $_POST['student_id'];
-        $book_id = $_POST['book_id'];
         $borrow_date = $_POST['borrow_date'];
         $return_date = $_POST['return_date'];
 
 
-        $sql = "INSERT INTO borrows (student_id, book_id, borrow_date, return_date, status)
-        VALUES ('$student_id', '$book_id', '$borrow_date', '$return_date', 'Dipinjam')";
+        $sql = "INSERT INTO borrows (student_id, borrow_date, return_date, status)
+        VALUES ('$student_id', '$borrow_date', '$return_date', 'Dipinjam')";
         mysqli_query($koneksi, $sql);
+
+        $borrow_id = mysqli_insert_id($koneksi);
+
+        foreach ($_POST['book_id'] as $book_id) {
+            $sql = "INSERT INTO borrow_details (book_id, borrow_id)
+                    VALUES ( '$book_id', '$borrow_id')";
+            mysqli_query($koneksi, $sql);
+        }
 
 
         header("Location: index.php");
@@ -37,9 +44,9 @@
 
     <div class="mb-2">
         <label>Buku</label>
-        <select name="book_id" class="form-control">
+        <select class="js-example-basic-multiple form-control" name="book_id[]" multiple = "multiple">
             <?php
-            $books = mysqli_query($koneksi,"SELECT *FROM books");
+            $books = mysqli_query($koneksi,"SELECT * FROM books");
             while ($row = mysqli_fetch_assoc($books)) {
                 echo "<option value='". $row['id']."'>".$row['title']."</option>";
             }

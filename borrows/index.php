@@ -3,25 +3,24 @@ include "../koneksi.php";
 include "header.php";
 
 
-$keyword = isset($_GET['keyword'])? $_GET['keyword0'] : '';
+$keyword = isset($_GET['keyword'])? $_GET['keyword'] : '';
 
 
 if ($keyword !='') {
 
-    $result = mysqli_query($koneksi,"SELECT borrows.id,borrows.student_id,borrows.book_id,borrows.borrow_date
+    $result = mysqli_query($koneksi,"SELECT borrows.id,borrows.student_id,borrows.borrow_date
     borrows.return_date,borrows.status,student.name AS student_name,books.title AS book_title FROM borrows JOIN students ON borrows.student_id = students.id
-    JOIN books ON borrows.book_id = books.id WHERE students.name LIKE '%$keyword%'
+    WHERE students.name LIKE '%$keyword%'
     OR books.title LIKE '%$keyword%'
     OR borrows.status LIKE '%$keyword%'");
 } else {
     $result = mysqli_query($koneksi, "
     SELECT borrows.id,borrows.student_id,
-    borrows.book_id,borrows.borrow_date,
+    borrows.borrow_date,
     borrows.return_date,borrows.status,
-    students.name AS student_name,
-    books.title AS book_title FROM 
-    borrows JOIN students ON borrows.student_id = students.id
-    JOIN books ON borrows.book_id = books.id");
+    students.name AS student_name
+    FROM 
+    borrows JOIN students ON borrows.student_id = students.id");
 }
 ?>
 
@@ -46,18 +45,37 @@ if ($keyword !='') {
             <th>Aksi</th>
         </tr>
         <?php
+            $nomor =1;
             while ($row = mysqli_fetch_assoc($result)) {
+                $result_buku = mysqli_query($koneksi, "
+                SELECT books.title as book_name 
+                FROM 
+                borrow_details LEFT JOIN books ON borrow_details.book_id = books.id where borrow_details.borrow_id='$row[id]'");
         ?>
         <tr>
-            <td><?= $row['id'] ?></td>
+            <td><?= $nomor++; ?></td>
             <td><?= $row['student_name'] ?></td>
-            <td><?= $row['book_title'] ?></td>
+            <td>
+                <?php 
+                foreach ($result_buku as $rb){
+                    echo $rb['book_name'].", ";
+                }
+                ?>
+            </td>
             <td><?= $row['borrow_date'] ?></td>
             <td><?= $row['return_date'] ?: '-' ?></td>
             <td><?= $row['status'] ?></td>
             <td>
-                <a href="edit.php?id=<?=$row['id'] ?>" class="btn btn warning btn-sm"><i class = "bi bi-pencil-square me-2"></i>Edit</a>
-                <a href="hapus.php?id=<?=$row['id'] ?>" class="btn btn warning btn-sm" onclick="return confirm('Yakin mau hapus?')"><i class="bi bi-trash"></i>Hapus</a>
+                <a href="edit.php?id=<?=$row['id'] ?>" class="btn btn-warning btn-sm"><i class = "bi bi-pencil-square me-2"></i>Edit</a>
+                <a href="hapus.php?id=<?=$row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau hapus?')"><i class="bi bi-trash me-2"></i>Hapus</a>
+                <?php
+                if($row['status']=="Dipinjam"){?>
+                
+                <a href="kembali.php?id=<?=$row['id'] ?>" class="btn btn-danger btn-sm">Kembalikan</a>
+                <?php
+                }
+                ?>
+                <!-- <a href="pinjam.php?id=<?=$row['id'] ?>" class="btn btn-danger btn-sm">Dipinjam</a> -->
             </td>
         </tr>
         <?php
