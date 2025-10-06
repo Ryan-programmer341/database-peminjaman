@@ -1,7 +1,7 @@
 <?php
     // untuk memasukkan file lain ke dalam file utama
     include "../koneksi.php";
-    include "header.php";
+    include "../header.php";
 
     // kita ingin tahu id atau baris mana yang diedit,update dan delete mana yang akan dicari di database//
     $id = $_GET['id'];

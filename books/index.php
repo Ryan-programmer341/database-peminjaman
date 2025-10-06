@@ -2,7 +2,7 @@
 <?php 
   // untuk memasukkan file lain ke dalam file utama
   include "../koneksi.php"; 
-  include "header.php";
+  include "../header.php";
   // bagian pencari data//
   // ngecek dulu apakah ada data keyword yang dikirim lewar url//
   // isset() cek apakah variabel sudah ada isinya

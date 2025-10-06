@@ -1,6 +1,6 @@
 <?php
     include "../koneksi.php";
-    include "header.php";
+    include "../header.php";
 
 
     $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';

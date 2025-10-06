@@ -1,6 +1,6 @@
 <?php
     include "../koneksi.php";
-    include "header.php";
+    include "../header.php";
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $student_id = $_POST['student_id'];
@@ -31,7 +31,7 @@
     <form method="POST">
     <div class="mb-2">
         <label>Nama Siswa</label>
-        <select name="student_id" class="form-control">
+        <select name="student_id" class="form-control" required>
                 <?php
                 $students = mysqli_query($koneksi, "SELECT * FROM students");
                 while ($row = mysqli_fetch_assoc($students)) {
@@ -44,7 +44,7 @@
 
     <div class="mb-2">
         <label>Buku</label>
-        <select class="js-example-basic-multiple form-control" name="book_id[]" multiple = "multiple">
+        <select name="book_id[]" class="js-example-basic-multiple form-control" multiple = "multiple">
             <?php
             $books = mysqli_query($koneksi,"SELECT * FROM books");
             while ($row = mysqli_fetch_assoc($books)) {
@@ -57,13 +57,13 @@
 
     <div class="mb-2">
         <label>Tanggal Pinjam</label>
-        <input type="date" name="borrow_date" class="form-control">
+        <input type="date" name="borrow_date" class="form-control" required>
     </div>
 
 
     <div class="mb-2">
         <label>Tanggal Kembali</label>
-        <input type="date" name="return_date" class="form-control">
+        <input type="date" name="return_date" class="form-control" required>
     </div>
 
 

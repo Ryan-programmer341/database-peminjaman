@@ -1,6 +1,6 @@
 <?php
 include "../koneksi.php";
-include "header.php";
+include "../header.php";
 
 
 $keyword = isset($_GET['keyword'])? $_GET['keyword'] : '';
@@ -8,7 +8,7 @@ $keyword = isset($_GET['keyword'])? $_GET['keyword'] : '';
 
 if ($keyword !='') {
 
-    $result = mysqli_query($koneksi,"SELECT borrows.id,borrows.student_id,borrows.borrow_date
+    $result = mysqli_query($koneksi,"SELECT borrows.id,borrows.student_id,borrows.borrow_date,
     borrows.return_date,borrows.status,student.name AS student_name,books.title AS book_title FROM borrows JOIN students ON borrows.student_id = students.id
     WHERE students.name LIKE '%$keyword%'
     OR books.title LIKE '%$keyword%'
@@ -41,6 +41,7 @@ if ($keyword !='') {
             <th>Buku</th>
             <th>Tanggal Pinjam</th>
             <th>Tanggal Kembali</th>
+            <th>Denda</th>
             <th>Status</th>
             <th>Aksi</th>
         </tr>
@@ -51,24 +52,40 @@ if ($keyword !='') {
                 SELECT books.title as book_name 
                 FROM 
                 borrow_details LEFT JOIN books ON borrow_details.book_id = books.id where borrow_details.borrow_id='$row[id]'");
+
+
+                $denda = 0;
+
+
+                if(!empty($row['return_date']) && $row['status'] != 'Dikembalikan') {
+                    $hari_ini = new DateTime();
+                    $tanggal_kembali = new DateTime($row['return_date']);
+
+
+                    if ($hari_ini > $tanggal_kembali) {
+                        $selisih = $tanggal_kembali->diff($hari_ini)->days;
+                        $denda = $selisih * 1000;
+                    }
+                }
         ?>
         <tr>
             <td><?= $nomor++; ?></td>
-            <td><?= $row['student_name'] ?></td>
+            <td><?= ($row['student_name']) ?></td>
             <td>
                 <?php 
                 foreach ($result_buku as $rb){
-                    echo $rb['book_name'].", ";
+                    echo htmlspecialchars ($rb['book_name']).", ";
                 }
                 ?>
             </td>
-            <td><?= $row['borrow_date'] ?></td>
-            <td><?= $row['return_date'] ?: '-' ?></td>
-            <td><?= $row['status'] ?></td>
+            <td><?= htmlspecialchars ($row['borrow_date']); ?></td>
+            <td><?= htmlspecialchars ($row['return_date']) ?: '-'; ?></td>
+            <td>Rp <?= number_format($denda, 0, ',','.') ?></td>
+            <td><?= htmlspecialchars ($row['status']); ?></td>
             <td>
                 <a href="edit.php?id=<?=$row['id'] ?>" class="btn btn-warning btn-sm"><i class = "bi bi-pencil-square me-2"></i>Edit</a>
                 <a href="hapus.php?id=<?=$row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau hapus?')"><i class="bi bi-trash me-2"></i>Hapus</a>
-                <?php
+                <?php 
                 if($row['status']=="Dipinjam"){?>
                 
                 <a href="kembali.php?id=<?=$row['id'] ?>" class="btn btn-danger btn-sm">Kembalikan</a>
@@ -86,5 +103,5 @@ if ($keyword !='') {
 
 
     <?php
-    include"../footer.php";
+        include"../footer.php";
     ?>
