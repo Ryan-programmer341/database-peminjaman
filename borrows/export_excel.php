@@ -60,7 +60,7 @@
         $rowNum++;
         $no++;
     }
-    
+    // bagian total dan nominal //
     $lastDataRow = $rowNum - 1;
     $sheet->mergeCells('A' . $rowNum . ':D' . $rowNum);
     $sheet->setCellValue('A' . $rowNum, 'Total');
