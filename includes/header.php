@@ -7,15 +7,37 @@
 
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-        <link rel="stylesheet" href= "/SISTEM_PEMINJAMAN_BUKU/style/page.css">
+        <!-- <link rel="stylesheet" href= "/SISTEM_PEMINJAMAN_BUKU/style/page.css"> -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-        <body>
-        <nav>
-            <a href= "/SISTEM_PEMINJAMAN_BUKU/index.php" ><i class="bi bi-house me-2"></i>Home</a>
-            <a href= "/SISTEM_PEMINJAMAN_BUKU/classes/index.php" ><i class="bi bi-house-door me-2"></i>Class</a>
-            <a href= "/SISTEM_PEMINJAMAN_BUKU/books/index.php" ><i class="bi bi-book me-2"></i>Book</a>
-            <a href= "/SISTEM_PEMINJAMAN_BUKU/students/index.php"><i class="bi bi-backpack3 me-2"></i>Students</a>
-            <a href="/SISTEM_PEMINJAMAN_BUKU/borrows/index.php"><i class="bi bi-person-circle me-2""></i>Borrows</a>
-        </nav>
     </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/SISTEM_PEMINJAMAN_BUKU/index.php">Peminjaman Buku</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/SISTEM_PEMINJAMAN_BUKU/index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/SISTEM_PEMINJAMAN_BUKU/borrows/index.php">Borrows</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Master Data
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/SISTEM_PEMINJAMAN_BUKU/classes/index.php">Class</a></li>
+                                <li><a class="dropdown-item" href="/SISTEM_PEMINJAMAN_BUKU/books/index.php">Book</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="/SISTEM_PEMINJAMAN_BUKU/students/index.php">Students</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>

@@ -110,3 +110,11 @@ nav a:hover {
     background: rgb(230, 234, 10);
     color: white; 
 }
+
+.card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+

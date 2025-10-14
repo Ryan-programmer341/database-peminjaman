@@ -2,6 +2,31 @@
 include "../koneksi.php";
 include "../header.php";
 
+function format_tanggal_indo($tanggal) {
+    if (empty($tanggal) || $tanggal == '0000-00-00') {
+        return '.';
+    }
+
+
+    $bulan = [
+        1 => 'Januari',
+        'Februari',
+        'Maret',
+        'April',
+        'Mei',
+        'Juni',
+        'Juli',
+        'Agustus',
+        'September',
+        'Oktober',
+        'November',
+        'Desember'
+    ];
+
+    $pecah = explode('-', $tanggal);
+    return $pecah[2] . ' ' . $bulan[(int)$pecah[1]] . ' ' . $pecah[0];
+}
+
 $keyword = isset($_GET['keyword']) ? $_GET['keyword'] : '';
 
 if ($keyword != '') {
@@ -16,7 +41,7 @@ if ($keyword != '') {
 }
 ?>
 
-<div class="container">
+<div class="container mt-5">
     <h2>Daftar Siswa</h2>
     <form method="GET" action="index.php" style="margin-bottom:30px; display:flex; gap:20px;">
         <input type= "text" name="keyword" placeholder="cari Nama / nis / birthdate / phonenumber/ classname"
@@ -25,15 +50,15 @@ if ($keyword != '') {
         <button type="submit" class="btn btn-primary">Cari</button>
     </form>
     <a href="tambah.php" class="btn btn-primary mb-3">Tambah Siswa</a>
-    <table class="table table-bordered">
-        <tr>
+    <table class="table table-bordered table-striped">
+        <tr class="table-dark">
             <th>No</th>
             <th>Name</th>
             <th>Nis</th>
             <th>Birthdate</th>
             <th>Phonenumber</th>
             <th>class_name</th>
-            <th>Aksi</th>
+            <th style="width:20%">Aksi</th>
         </tr>
         <?php
             $no=1; while($row = mysqli_fetch_assoc($result)) {
@@ -42,12 +67,12 @@ if ($keyword != '') {
             <td><?= $no++ ?></td>
             <td><?= $row['name']; ?></td>
             <td><?= $row['nis']; ?></td>
-            <td><?= $row['birthdate']; ?></td>
+            <td><?= format_tanggal_indo ($row['birthdate']); ?></td>
             <td><?= $row['phone_number']; ?></td>
             <td><?= $row['class_name']; ?></td>
             <td>
                 <a href="edit.php?id=<?=$row['id'] ?>" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square me-2"></i>Edit</a>
-                <a href="hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau hapus bang?')"><i class="bi bi-trash"></i>Hapus</a>
+                <a href="hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau hapus?')"><i class="bi bi-trash"></i>Hapus</a>
             </td>
         </tr>
         <?php

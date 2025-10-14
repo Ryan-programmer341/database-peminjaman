@@ -20,7 +20,7 @@
   }
 ?>
 
-<div class="container">
+<div class="container mt-5">
   <h2>Daftar Buku</h2>
   <form method="GET" action="index.php" style="margin-bottom:30px; display:flex; gap:20px;">
     <input type+"text" name="keyword" placeholder="cari judul / pengarang / penerbit"
@@ -29,14 +29,14 @@
     <button type="submit" class="btn btn-primary">Cari</button>
   </form>
   <a href="tambah.php" class="btn btn-primary mb-3">Tambah Buku</a>
-  <table class="table table-bordered">
-    <tr>
+  <table class="table table-bordered table-striped">
+    <tr class="table-dark">
       <th>No</th>
       <th>Judul</th>
       <th>Pengarang</th>
       <th>Penerbit</th>
       <th>Tahun</th>
-      <th>Aksi</th>
+      <th style="width:20%">Aksi</th>
     </tr>
     <?php
       // looping(mengulang) untuk ambil semua data hasil query dari database baris demi baris 
@@ -50,7 +50,7 @@
       <td><?= $row['year'] ?></td>
       <td>
         <a href="edit.php?id=<?= $row['id'] ?>" class="btn btn-warning btn-sm"><i class="bi bi-pencil-square me-2"></i>Edit</a>
-        <a href="hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau hapus bang?')"><i class="bi bi-trash"></i>Hapus</a>
+        <a href="hapus.php?id=<?= $row['id'] ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin mau hapus?')"><i class="bi bi-trash"></i>Hapus</a>
       </td>
     </tr>
     <?php 

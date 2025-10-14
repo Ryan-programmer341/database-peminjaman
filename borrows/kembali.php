@@ -38,23 +38,5 @@
             denda=$denda
             WHERE id=$id";
             mysqli_query($koneksi, $sql);
-            echo "
-            <!DOCTYPE html>
-            <html lang='id'>
-            <head>
-                <meta charset='UTF-8'>
-                <title>Pengembalian Buku</title>
-                <link rel='stylesheet' href='../style/style.css'>
-            </head>
-            <body style'font-family: arial; text-align:center; margin-top: 80px;'>
-            <h2>Pengembalian Berhasil</h2>
-            <p><b>Tanggal Pengembalian:</b>$tanggal_pengembalian</p>
-            <p><b>Tanggal Kembali (seharusnya):</b> $return_date</p>
-            <p><b>Denda:</b> ". ($denda > 0 ? 'Rp'. number_format($denda, 0, ',','.') : 'Tidak ada') . "</p>
-            <br>
-            <a href='index.php' style='text-decoration:none; color:white; background:#007BFFQ; padding:10px 20px; border-radius:5px;'>Kembali ke Daftar</a>
-            </body>
-            </html>
-            ";
     header("Location: index.php");
 ?>
