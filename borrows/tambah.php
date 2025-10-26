@@ -15,9 +15,9 @@
         $borrow_id = mysqli_insert_id($koneksi);
 
         foreach ($_POST['book_id'] as $book_id) {
-            $sql = "INSERT INTO borrow_details (book_id, borrow_id)
+            $query = "INSERT INTO borrow_details (book_id, borrow_id)
                     VALUES ( '$book_id', '$borrow_id')";
-            mysqli_query($koneksi, $sql);
+            mysqli_query($koneksi, $query);
         }
 
 

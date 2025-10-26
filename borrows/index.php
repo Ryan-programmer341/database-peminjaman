@@ -46,12 +46,9 @@ if ($keyword !='') {
     borrows.borrow_date,
     borrows.return_date,
     borrows.status,
-    students.name AS student_name,
-    books.title AS book_title 
+    students.name AS student_name
     FROM 
     borrows JOIN students ON borrows.student_id = students.id
-    JOIN borrow_details ON borrows.id = borrow_details.borrow_id
-    JOIN books ON borrow_details.book_id = books.id
     ");
 }
 if (isset($_GET['export']) && $_GET['export'] == 'excel') {
@@ -70,8 +67,58 @@ if (isset($_GET['export']) && $_GET['export'] == 'excel') {
         style="flex:1; padding:8px; border: 1px solid #cc1111ff; border-radius: 5px">
         <button type="submit" class="btn btn-primary">Cari</button>
     </form>
-    <a href="tambah.php" class="btn btn-primary mb-3">Tambah Peminjam</a>
-    <a href="export_excel.php" class="btn btn-success mb-3">Export Excel</a>
+    <div class="d-flex align-items-center mb-3">
+        <a href="tambah.php" class="btn btn-primary mb-3">Tambah Peminjam</a>
+        <button type="submit" class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target=#exportModal>Export Excel</button>
+    </div>
+
+    <div class="modal fade" id="exportModal" tabindex="-1" aria-labelledby="exportModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+    <form method="GET" action="export_excel.php">
+        <div class="modal-header bg-success text-white">
+            <h5 class="modal-title" id="exportModalLabel">Filter Data Peminjaman</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+            <div class="mb-3">
+                <label class="form-label">Nama Peminjam</label>
+                <select name="nama" id="nama" class="form-control">
+                    <option value="">PILIH NAMA PEMINJAM</option>
+                    <?php
+                        $query = mysqli_query($koneksi, "SELECT * FROM students ORDER BY name ASC");
+                        while ($row = mysqli_fetch_assoc($query)) {
+                            echo '<option value="'.$row['name'].'">'.$row['name'].'</option>';
+                        }
+                    ?>
+                </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tanggal Pinjam</label>
+            <input type="date" class="form-control" name="tgl_pinjam">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Status</label>
+            <select name="status" class="form-select">
+                <option value="">Semua</option>
+                <option value="Dipinjam">Dipinjam</option>
+                <option value="Dikembalikan">Dikembalikan</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+        <button type="submit" class="btn btn-success">Export Excel</button>
+    </div>
+    </form>
+</div>
+</div>
+</div>
+
     <table class="table table-bordered table-striped">
         <tr class="table-dark">
             <th>NO</th>
